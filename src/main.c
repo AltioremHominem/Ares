@@ -23,7 +23,7 @@ int main(int argc, char  **argv){
   short opt;
   short opt_index = 0;
   if (argc == 0) {
-    startCurses(); //rendering.c Function   
+    startCurses(NULL); //rendering.c Function   
 
   } else {
     if (optind < argc) {
@@ -46,8 +46,8 @@ int main(int argc, char  **argv){
                   printf(ERROR_INFO);
                   return 1;
                 } else {
-                  startCurses(); //rendering.c Function but calling an IO
-          }
+                                          startCurses(filename); //rendering.c Function but calling an IO
+            }
            }
             break;
           default:

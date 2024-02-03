@@ -3,6 +3,8 @@
 
 #include <curses.h>
 
+#include "fileIO.h"
+
 #define ESCAPE 27
 #define SPACE 32
 #define ENTER 10
@@ -14,12 +16,21 @@
 #define STARTING_ROWS_SIZE 128
 #define STARTING_ROW_SIZE 64
 
-void startCurses(){
+void startCurses(char *filename){
   initscr(); //Ncurses Functions
   noecho();
   raw();
 
   init_colors();
+
+
+  if (filename == NULL) {
+
+    
+  } else {
+
+    
+  }
 
   
 
