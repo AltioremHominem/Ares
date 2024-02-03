@@ -28,7 +28,7 @@ void startCurses(char *filename){
 
     
   } else {
-
+    fileInput(filename);
     
   }
 
