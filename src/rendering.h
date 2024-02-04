@@ -3,11 +3,11 @@
 
 
 
-void screenRendering();
+void screenRendering(char *archiveText);
 
-void startCurses(char *filename);
+void startTermBox(char *filename);
 
-void finishCurses();
+void finishTermBox();
 
 
 

@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include <curses.h>
+#include <termbox.h>
 
 #include "fileIO.h"
 
@@ -18,22 +18,20 @@
 
 
 
-void screenRendering(){
+void screenRendering(char *archiveText){
+  for (long long i = 0; i < sizeof(archiveText);i++){
 
+
+
+    
+  }
 
 
   
 }
 
-void startCurses(char *filename){
-  initscr(); //Ncurses Functions
-  cbreak();
-  noecho();
-  raw();
-  keypad(stdscr,TRUE);
-
-  init_colors();
-
+void startTermBox(char *filename){
+                          //TermBox Functions
 
   if (filename == NULL) {
 
@@ -41,6 +39,7 @@ void startCurses(char *filename){
   } else {
     char *archiveText;
     archivetext=(char *)malloc(1 * sizeof(fileInput(filename));
+    screenRendering(archiveText);
     free(archiveText);
   }
 
@@ -51,7 +50,7 @@ void startCurses(char *filename){
 
 
 void finishCurses(){
-  endwin(); //NCurses End Function
+   //TermBox End Function
 
   
 }
