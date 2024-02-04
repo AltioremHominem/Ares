@@ -16,10 +16,21 @@
 #define STARTING_ROWS_SIZE 128
 #define STARTING_ROW_SIZE 64
 
+
+
+void screenRendering(){
+
+
+
+  
+}
+
 void startCurses(char *filename){
   initscr(); //Ncurses Functions
+  cbreak();
   noecho();
   raw();
+  keypad(stdscr,TRUE);
 
   init_colors();
 
@@ -28,8 +39,9 @@ void startCurses(char *filename){
 
     
   } else {
-    fileInput(filename);
-    
+    char *archiveText;
+    archivetext=(char *)malloc(1 * sizeof(fileInput(filename));
+    free(archiveText);
   }
 
   

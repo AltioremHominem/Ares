@@ -6,16 +6,16 @@
 
 
 
-void fileInput(char *filename){
+char fileInput(char *filename){
   FILE *archive;
 
   archive = fopen(filename,"r");
 
-  if (archive = NULL) {
+  if (archive = NULL) {  // Create Archive if doesn't exist
     archivo = fopen(filename,"w");
+    return NULL;
     
-    
-  } else {
+  } else { // Read Archive 
     short character;
     long long length = 0;
     char *charArray;
