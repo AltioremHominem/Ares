@@ -42,11 +42,11 @@ int main(int argc, char  **argv){
           case '?':
             for(i=0;filename[i] != '\0' ; i++) {
               
-                if(filename[] == '*' || filename[] == '?' || filename[] == '/' || filename[] == '\\' ){
+                if(filename[i] == '*' || filename[i] == '?' || filename[i] == '/' || filename[i] == '\\' || filename[i] == '<' || filename[i] == '>' || filename[i] == ':' || filename[i] == '|' || filename[i] == '"' || filename[i] == "'" || filename[i] == ';' || filename[i] == ',' || filename[i] == '=' ){
                   printf(ERROR_INFO);
                   return 1;
                 } else {
-                                          startCurses(filename); //rendering.c Function but calling an IO
+                    startCurses(filename); //rendering.c Function but calling an IO
             }
            }
             break;
