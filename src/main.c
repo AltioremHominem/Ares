@@ -46,7 +46,7 @@ int main(int argc, char  **argv){
                   printf(ERROR_INFO);
                   return 1;
                 } else {
-                    startCurses(filename); //rendering.c Function but calling an IO
+                    startTermBox(filename); //rendering.c Function but calling an IO
             }
            }
             break;

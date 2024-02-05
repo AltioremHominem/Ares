@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include <curses.h>
+#include <termbox.h>
 
 #include "fileIO.h"
 
@@ -18,29 +18,36 @@
 
 
 
-void screenRendering(){
+void screenRendering(char *archiveText){
+  for (long long i = 0; i < sizeof(archiveText);i++){
 
+
+
+    
+  }
 
 
   
 }
 
-void startCurses(char *filename){
-  initscr(); //Ncurses Functions
-  cbreak();
-  noecho();
-  raw();
-  keypad(stdscr,TRUE);
+void startTermBox(char *filename){
+  struct termbox_context *tb;
+  
+  tb = tb_init();         //TermBox Functions
 
-  init_colors();
+  struct termbox_cell *cells;
+  short width, height;
+  termbox_get_size(&width, &height);
+  cells = malloc(width * height * sizeof(struct termbox_cell));
 
-
+  termbox_clear(tb,0);
   if (filename == NULL) {
 
     
   } else {
     char *archiveText;
     archivetext=(char *)malloc(1 * sizeof(fileInput(filename));
+    screenRendering(archiveText);
     free(archiveText);
   }
 
@@ -50,8 +57,9 @@ void startCurses(char *filename){
 }
 
 
-void finishCurses(){
-  endwin(); //NCurses End Function
+void finishTermBox(){
+  free(cells);
+  tb_shutdown();   //TermBox End Function
 
   
 }

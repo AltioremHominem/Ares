@@ -4,4 +4,6 @@ Minimalist Text Editor Writted in C.
 
 ## Instalation Dependencies
 
-gcc, make, ncurses or termbox
+gcc, make, termbox
+
+Install termbox with your package manager and link with gcc with "-ltermbox"
