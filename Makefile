@@ -2,7 +2,7 @@ CC = gcc # Standar C Compiler
 
 CFLAGS = -Wall -Wextra # Compiler Flags for more precision
 
-LIBS = -lncurses # Curses Library
+LIBS = -ltermbox # TermBox Library
 
 all : #make in the terminal to execute this
 	$(CC) $(CFLAGS) src/main.c -o builds/Ares $(LIBS)
@@ -10,4 +10,3 @@ all : #make in the terminal to execute this
 clean : #make clean to remove binaries
 	rm -f builds/Ares
 
-debug : #make debug to debug
