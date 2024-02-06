@@ -44,12 +44,12 @@ void startRenderTermBox(char *filename){
 
 
     if (filename == NULL) {
-
+    screenRendering();
     
     } else {
     fileInput(filename);
     archiveText=(char *)malloc(1 * sizeof(archiveText));
-    screenRendering(archiveText);
+    textRendering(archiveText);
     free(archiveText);
     }
 
