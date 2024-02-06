@@ -19,47 +19,39 @@
 
 
 void screenRendering(char *archiveText){
-  for (long long i = 0; i < sizeof(archiveText);i++){
+    for (long long i = 0; i < sizeof(archiveText);i++){
 
 
 
-    
-  }
+    }
 
 
-  
 }
 
 void startTermBox(char *filename){
-  struct termbox_context *tb;
-  
-  tb = tb_init();         //TermBox Functions
+    struct termbox_context *tb;
+    tb = tb_init();         //TermBox Functions
 
-  struct termbox_cell *cells;
-  short width, height;
-  termbox_get_size(&width, &height);
-  cells = malloc(width * height * sizeof(struct termbox_cell));
+    struct termbox_cell *cells;
+    short width, height;
+    termbox_get_size(&width, &height);
+    cells = malloc(width * height * sizeof(struct termbox_cell));
 
-  termbox_clear(tb,0);
-  if (filename == NULL) {
+    termbox_clear(tb,0);
+    if (filename == NULL) {
 
     
-  } else {
+    } else {
     char *archiveText;
-    archivetext=(char *)malloc(1 * sizeof(fileInput(filename));
+    archiveText=(char *)malloc(1 * sizeof(fileInput(filename));
     screenRendering(archiveText);
     free(archiveText);
-  }
+    }
 
-  
-
-  
 }
 
 
 void finishTermBox(){
-  free(cells);
-  tb_shutdown();   //TermBox End Function
-
-  
+    free(cells);
+    tb_shutdown();   //TermBox End Function
 }
