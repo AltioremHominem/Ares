@@ -1,10 +1,10 @@
 #ifndef FILEIO_H
 #define FILEIO_H
 
-void fileInput(char *filename);
+char fileInput(char *filename);
 
 
-void fileOutput():
+void fileOutput();
 
 
 
