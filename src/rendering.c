@@ -30,7 +30,7 @@ void inputRendering(){
 }
 
 void textRendering(char *archiveText){ // Rendering of the text of the input file
-    for (long long i = 0; i < sizeof(archiveText);i++){
+    for (long unsigned i = 0; i < sizeof(archiveText);i++){
 
 
 
