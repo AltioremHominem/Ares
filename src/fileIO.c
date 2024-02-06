@@ -7,17 +7,15 @@
 
 
 
-
-char fileInput(char *filename){
+void fileInput(char *filename){
     FILE *archive;
 
-    archive = fopen(filename,"r");
+    archive = fopen(filename,"a+"); // Read Archive, if it doesn't exist, creates it
 
-    if (archive = NULL) {  // Create Archive if doesn't exist
-        archive = fopen(filename,"w");
-        return NULL;
-    
-    } else { // Read Archive
+    if ( archive == NULL ) {
+
+
+    } else { // Read Archive and all the text comes to the memory
         short character;
         long long length = 0;
         char *charArray;

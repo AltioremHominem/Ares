@@ -9,6 +9,7 @@
 
 #define ERROR_INFO " ERROR: Bad Character Given."
 
+
 static struct option long_options[] = {
         {"help",no_argument, 0, 'h'},
         {"version",no_argument, 0, 'h'},
