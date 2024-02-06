@@ -1,63 +1,58 @@
 #include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
 #include <getopt.h>
 
 #include "rendering.h"
-#include "fileIO.h"
 
-#define VERSION_INFO " "
+#define VERSION_INFO " Version 0.0.1 "
 
-#define HELP_INFO " "
+#define HELP_INFO " -h for help , -v for version "
 
-#define ERROR_INFO " "
+#define ERROR_INFO " ERROR: Bad Character Given."
 
 static struct option long_options[] = {
-  {"help",no_argument, 0, 'h'},
-  {"version",no_argument, 0, 'h'},
-  {0,0,0,0}
-  
+        {"help",no_argument, 0, 'h'},
+        {"version",no_argument, 0, 'h'},
+        {0,0,0,0}
 };
 
 int main(int argc, char  **argv){
-  short opt;
-  short opt_index = 0;
-  if (argc == 0) {
-    startCurses(NULL); //rendering.c Function   
+    int opt;
+    int opt_index = 0;
+    if (argc == 0) {
+        startTermBox(NULL); //rendering.c Function
 
-  } else {
-    if (optind < argc) {
-      filename = argv[optind];
+    } else {
+        if (optind < argc) { // If is there a filename to parse
+            char *filename;
+            filename = argv[optind];
     }
-      while ((opt = getopt_long(argc, argv, "hv",long_options, &opt_index)) != -1) {
-        switch(opt){
-          case 'h':
-            printf(HELP_INFO);
-              return 0;
-            break;
-          case 'v':
-            printf(VERSION_INFO);
-          return 0;
-            break;
-          case '?':
-            for(i=0;filename[i] != '\0' ; i++) {
-              
-                if(filename[i] == '*' || filename[i] == '?' || filename[i] == '/' || filename[i] == '\\' || filename[i] == '<' || filename[i] == '>' || filename[i] == ':' || filename[i] == '|' || filename[i] == '"' || filename[i] == "'" || filename[i] == ';' || filename[i] == ',' || filename[i] == '=' ){
-                  printf(ERROR_INFO);
-                  return 1;
-                } else {
+        char *filename;
+        while ((opt = getopt_long(argc, argv, "hv",long_options, &opt_index)) != -1) {
+            switch(opt){
+                case 'h':
+                    printf(HELP_INFO);
+                    return 0;
+                case 'v':
+                    printf(VERSION_INFO);
+                    return 0;
+                case '?':
+                    for(int i=0;filename[i] != '\0' ; i++) {
+                        if(filename[i] == '*' || filename[i] == '?' || filename[i] == '/' || filename[i] == '\\' || filename[i] == '<' || filename[i] == '>' || filename[i] == ':' || filename[i] == '|' || filename[i] == '"' || filename[i] == '\'' || filename[i] == ';' || filename[i] == ',' || filename[i] == '=' ){
+                            printf(ERROR_INFO);
+                        return 1;
+                        } else {
                     startTermBox(filename); //rendering.c Function but calling an IO
             }
-           }
-            break;
-          default:
-            break:
+                    }
+                    break;
+                    default:
+                    break;
         
-      }
-    } 
-  }
+            }
+        }
+    }
 
 
 
-  return 0;
+    return 0;
 }
