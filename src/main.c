@@ -19,7 +19,7 @@ int main(int argc, char  **argv){
     int opt;
     int opt_index = 0;
     if (argc == 0) {
-        startTermBox(NULL); //rendering.c Function
+        startRenderTermBox(NULL); //rendering.c Function
 
     } else {
         if (optind < argc) { // If is there a filename to parse
@@ -33,7 +33,7 @@ int main(int argc, char  **argv){
                     printf(ERROR_INFO);
                     return 1;
                 } else {
-                    startTermBox(filename); //rendering.c Function but calling an IO
+                    startRenderTermBox(filename); //rendering.c Function but calling an IO
                 }
             }
     }
@@ -53,7 +53,7 @@ int main(int argc, char  **argv){
                             printf(ERROR_INFO);
                         return 1;
                         } else {
-                    startTermBox(filename); //rendering.c Function but calling an IO
+                    startRenderTermBox(filename); //rendering.c Function but calling an IO
             }
                     }
                     break;

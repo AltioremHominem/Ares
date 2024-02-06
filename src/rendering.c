@@ -4,6 +4,7 @@
 #include <termbox.h>
 
 #include "fileIO.h"
+#include "rendering.h"
 
 #define ESCAPE 27
 #define SPACE 32
@@ -28,7 +29,7 @@ void screenRendering(char *archiveText){
 
 }
 
-void startTermBox(char *filename){
+void startRenderTermBox(char *filename){
     tb_init();         //TermBox Functions
 
 
@@ -45,6 +46,6 @@ void startTermBox(char *filename){
 }
 
 
-void finishTermBox(){
+void finishRenderTermBox(){
     tb_shutdown();   //TermBox End Function
 }

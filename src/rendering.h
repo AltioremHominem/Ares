@@ -5,9 +5,9 @@
 
 void screenRendering(char *archiveText);
 
-void startTermBox(char *filename);
+void startRenderTermBox(char *filename);
 
-void finishTermBox();
+void finishRenderTermBox();
 
 
 
