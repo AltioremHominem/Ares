@@ -16,7 +16,7 @@
 #define STARTING_ROWS_SIZE 128
 #define STARTING_ROW_SIZE 64
 
-
+char *archiveText; // Is Used to manage the file input
 
 void screenRendering(char *archiveText){
     for (long long i = 0; i < sizeof(archiveText);i++){
@@ -36,8 +36,8 @@ void startRenderTermBox(char *filename){
 
     
     } else {
-    char *archiveText;
-    archiveText=(char *)malloc(1 * sizeof(fileInput(filename)));
+    fileInput(filename);
+    archiveText=(char *)malloc(1 * sizeof(archiveText));
     screenRendering(archiveText);
     free(archiveText);
     }
