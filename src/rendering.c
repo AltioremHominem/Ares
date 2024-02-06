@@ -29,21 +29,15 @@ void screenRendering(char *archiveText){
 }
 
 void startTermBox(char *filename){
-    struct termbox_context *tb;
-    tb = tb_init();         //TermBox Functions
+    tb_init();         //TermBox Functions
 
-    struct termbox_cell *cells;
-    short width, height;
-    termbox_get_size(&width, &height);
-    cells = malloc(width * height * sizeof(struct termbox_cell));
 
-    termbox_clear(tb,0);
     if (filename == NULL) {
 
     
     } else {
     char *archiveText;
-    archiveText=(char *)malloc(1 * sizeof(fileInput(filename));
+    archiveText=(char *)malloc(1 * sizeof(fileInput(filename)));
     screenRendering(archiveText);
     free(archiveText);
     }
@@ -52,6 +46,5 @@ void startTermBox(char *filename){
 
 
 void finishTermBox(){
-    free(cells);
     tb_shutdown();   //TermBox End Function
 }
