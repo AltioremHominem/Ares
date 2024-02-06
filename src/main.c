@@ -25,6 +25,7 @@ int main(int argc, char  **argv){
         if (optind < argc) { // If is there a filename to parse
             char *filename;
             filename = argv[optind];
+            startTermBox(filename);
     }
         char *filename;
         while ((opt = getopt_long(argc, argv, "hv",long_options, &opt_index)) != -1) {
