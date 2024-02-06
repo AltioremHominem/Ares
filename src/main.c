@@ -25,7 +25,17 @@ int main(int argc, char  **argv){
         if (optind < argc) { // If is there a filename to parse
             char *filename;
             filename = argv[optind];
-            startTermBox(filename);
+            for(int i=0;filename[i] != '\0' ; i++) {
+                if (filename[i] == '*' || filename[i] == '?' || filename[i] == '/' || filename[i] == '\\' ||
+                    filename[i] == '<' || filename[i] == '>' || filename[i] == ':' || filename[i] == '|' ||
+                    filename[i] == '"' || filename[i] == '\'' || filename[i] == ';' || filename[i] == ',' ||
+                    filename[i] == '=') {
+                    printf(ERROR_INFO);
+                    return 1;
+                } else {
+                    startTermBox(filename); //rendering.c Function but calling an IO
+                }
+            }
     }
         char *filename;
         while ((opt = getopt_long(argc, argv, "hv",long_options, &opt_index)) != -1) {
@@ -36,7 +46,8 @@ int main(int argc, char  **argv){
                 case 'v':
                     printf(VERSION_INFO);
                     return 0;
-                case '?':
+                case '?': // Future Arguments Preparation Parsing
+                    filename = argv[1];
                     for(int i=0;filename[i] != '\0' ; i++) {
                         if(filename[i] == '*' || filename[i] == '?' || filename[i] == '/' || filename[i] == '\\' || filename[i] == '<' || filename[i] == '>' || filename[i] == ':' || filename[i] == '|' || filename[i] == '"' || filename[i] == '\'' || filename[i] == ';' || filename[i] == ',' || filename[i] == '=' ){
                             printf(ERROR_INFO);
