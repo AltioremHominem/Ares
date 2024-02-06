@@ -8,5 +8,5 @@ all : #make in the terminal to execute this
 	$(CC) $(CFLAGS) src/main.c src/rendering.c src/fileIO.c -o Ares $(LIBS)
 
 clean : #make clean to remove binaries
-	rm -f builds/Ares
+	rm -f Ares
 
