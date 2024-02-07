@@ -5,6 +5,7 @@
 
 #include "fileIO.h"
 #include "rendering.h"
+#include "modes.h"
 
 #define BACKSPACE TB_KEY_BACKSPACE
 #define TAB TB_KEY_TAB
