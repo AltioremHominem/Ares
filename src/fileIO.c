@@ -9,12 +9,12 @@
 void fileInput(char *filename){
     FILE *archive;
 
-    archive = fopen(filename,"a+"); // Read Archive, if it doesn't exist, creates it
+    archive = fopen(filename,"a+"); // ? Read Archive, if it doesn't exist, creates it
 
     if ( archive == NULL ) {
 
 
-    } else { // Read Archive and all the text comes to the memory
+    } else { // ? Read Archive and all the text comes to the memory
         int character;
         long long length = 0;
         char *charArray;

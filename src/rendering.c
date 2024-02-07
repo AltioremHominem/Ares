@@ -19,11 +19,11 @@
 
 #define ERROR_MESSAGE "NOT ENOUGH ESPACE"
 
-char *archiveText; // Is Used to manage the file input
+char *archiveText; // ? Is Used to manage the file input
 
 
 void screenRendering(){
-    struct tb_cell *cells = tb_cell_buffer();
+    struct tb_cell *cells = tb_cell_buffer(); // ? This is used to make the terminal output match the terminal color scheme.
     uint16_t bg = cells[5 + 5 * tb_width()].bg;
 }
 
@@ -34,7 +34,7 @@ void inputRendering(){
 
 }
 
-void textRendering(char *archiveText){ // Rendering of the text of the input file
+void textRendering(char *archiveText){ // ? Rendering of the text of the input file
     for (long unsigned i = 0; i < sizeof(archiveText);i++){
 
 
@@ -46,7 +46,7 @@ void textRendering(char *archiveText){ // Rendering of the text of the input fil
 
 void startRenderTermBox(char *filename){
     tb_init();
-    tb_present(); //TermBox Functions
+    tb_present(); // ? Init TermBox Functions
     int width, height;
     width = tb_width();
     height = tb_height();
@@ -71,5 +71,5 @@ void startRenderTermBox(char *filename){
 
 
 void finishRenderTermBox(){
-    tb_shutdown();   //TermBox End Function
+    tb_shutdown();   // ? End TermBox End Function
 }
