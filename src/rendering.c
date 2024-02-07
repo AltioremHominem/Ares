@@ -55,6 +55,10 @@ void textRendering(char *archiveText){ // ? Rendering of the text of the input f
     uint16_t fg = TB_WHITE;
     // ? Loop through each character in the array and print it on the screen
     for (int i = 0; archiveText[i] != '\0'; i++){
+        if (archiveText[i] == '\n') {
+            x = 0;
+            y++;
+        }
         tb_change_cell(x,y,archiveText[i],fg,bg);
         x++;
         tb_present();
