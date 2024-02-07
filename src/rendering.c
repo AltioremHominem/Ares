@@ -46,14 +46,35 @@ void screenRendering(){
 }
 
 void inputRendering(){
+    struct tb_event event;
+    tb_poll_event(&event);
+    struct tb_cell *cells = tb_cell_buffer(); // ? This is used to make the terminal output match the terminal color scheme.
+    uint16_t bg = cells[5 + 5 * tb_width()].bg;
+    uint16_t fg = TB_WHITE;
+    int current_mode = NORMAL_MODE;
     while (1) {
-        struct tb_event event;
-        tb_poll_event(&event);
         if (event.type == TB_EVENT_KEY) {
-
+            if (current_mode == NORMAL_MODE) {
+                if (event.key == 'i') {
+                    current_mode = INSERT_MODE;
+                    tb_present();
+                } else if (event.key == ':') {
+                    current_mode = COMMAND_MODE;
+                    tb_present();
+                }
+            } else if (current_mode == INSERT_MODE) {
+                if (event.key == ESCAPE) {
+                    current_mode = NORMAL_MODE;
+                    tb_present();
+                }
+            } else if (current_mode == COMMAND_MODE) {
+                if (event.key == ESCAPE) {
+                    current_mode = NORMAL_MODE;
+                    tb_present();
+                }
+            }
         }
     }
-
 }
 
 void textRendering(char *archiveText){ // ? Rendering of the text of the input file
