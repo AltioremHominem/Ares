@@ -49,17 +49,16 @@ void inputRendering(){
 }
 
 void textRendering(char *archiveText){ // ? Rendering of the text of the input file
-    int y,x;
+    int y = 0, x = 0;
     struct tb_cell *cells = tb_cell_buffer(); // ? This is used to make the terminal output match the terminal color scheme.
     uint16_t bg = cells[5 + 5 * tb_width()].bg;
     uint16_t fg = TB_WHITE;
-    for (long unsigned i = 0; i < sizeof(archiveText);i++){
-
-
-
+    // ? Loop through each character in the array and print it on the screen
+    for (int i = 0; archiveText[i] != '\0'; i++){
+        tb_change_cell(x,y,archiveText[i],fg,bg);
+        x++;
+        tb_present();
     }
-
-
 }
 
 void startRenderTermBox(char *filename){
