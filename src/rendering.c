@@ -34,6 +34,10 @@
 #define ALT TB_KEY_ALT_T
 #define ERROR_MESSAGE "NOT ENOUGH ESPACE"
 
+#define NORMAL_MODE 0
+#define INSERT_MODE 1
+#define COMMAND_MODE 2
+
 char *archiveText; // ? Is Used to manage the file input
 
 
@@ -43,7 +47,11 @@ void screenRendering(){
 
 void inputRendering(){
     while (1) {
+        struct tb_event event;
+        tb_poll_event(&event);
+        if (event.type == TB_EVENT_KEY) {
 
+        }
     }
 
 }
@@ -79,6 +87,7 @@ void startRenderTermBox(char *filename){
 
     if (filename == NULL) {
     screenRendering();
+    inputRendering();
     
     } else {
         screenRendering();
@@ -86,6 +95,7 @@ void startRenderTermBox(char *filename){
     archiveText=(char *)malloc(1 * sizeof(archiveText));
     textRendering(archiveText);
     free(archiveText);
+    inputRendering();
     }
 
 }
