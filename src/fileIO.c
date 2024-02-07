@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -16,7 +15,7 @@ void fileInput(char *filename){
 
 
     } else { // Read Archive and all the text comes to the memory
-        short character;
+        int character;
         long long length = 0;
         char *charArray;
         charArray = (char *)malloc(2 * sizeof(char));
@@ -24,6 +23,7 @@ void fileInput(char *filename){
         while ((character = getchar()) !=  '\n' && character != EOF) {
         charArray = (char *)realloc(charArray, (length + 1) * sizeof(char));
         if (charArray == NULL) {
+            free(charArray);
             exit(1);
         }
         charArray[length++] = (char)character;
@@ -32,6 +32,7 @@ void fileInput(char *filename){
 
     charArray = (char *)realloc(charArray, (length + 1)* sizeof(char) );
         if ( charArray == NULL) {
+            free(charArray);
         exit(1);
     }
     charArray[length] = '\0';
