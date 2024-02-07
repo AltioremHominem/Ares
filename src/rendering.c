@@ -38,8 +38,7 @@ char *archiveText; // ? Is Used to manage the file input
 
 
 void screenRendering(){
-    struct tb_cell *cells = tb_cell_buffer(); // ? This is used to make the terminal output match the terminal color scheme.
-    uint16_t bg = cells[5 + 5 * tb_width()].bg;
+
 }
 
 void inputRendering(){
@@ -50,6 +49,10 @@ void inputRendering(){
 }
 
 void textRendering(char *archiveText){ // ? Rendering of the text of the input file
+    int y,x;
+    struct tb_cell *cells = tb_cell_buffer(); // ? This is used to make the terminal output match the terminal color scheme.
+    uint16_t bg = cells[5 + 5 * tb_width()].bg;
+    uint16_t fg = TB_WHITE;
     for (long unsigned i = 0; i < sizeof(archiveText);i++){
 
 
