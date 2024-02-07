@@ -6,17 +6,32 @@
 #include "fileIO.h"
 #include "rendering.h"
 
-#define ESCAPE 27
-#define SPACE 32
-#define ENTER 10
-#define DOWN_ARROW 258
-#define UP_ARROW 259
-#define LEFT_ARROW 260
-#define RIGHT_ARROW 261
-
-#define STARTING_ROWS_SIZE 128
-#define STARTING_ROW_SIZE 64
-
+#define BACKSPACE TB_KEY_BACKSPACE
+#define TAB TB_KEY_TAB
+#define ENTER TB_KEY_ENTER
+#define ESCAPE TB_KEY_ESC
+#define F1 TB_KEY_F1
+#define F2 TB_KEY_F2
+#define F3 TB_KEY_F3
+#define F4 TB_KEY_F4
+#define F5 TB_KEY_F5
+#define F6 TB_KEY_F6
+#define F7 TB_KEY_F7
+#define F8 TB_KEY_F8
+#define F9 TB_KEY_F9
+#define F10 TB_KEY_F10
+#define F11 TB_KEY_F11
+#define F12 TB_KEY_F12
+#define ARROW_LEFT TB_KEY_ARROW_LEFT
+#define ARROW_UP TB_KEY_ARROW_UP
+#define ARROW_RIGHT TB_KEY_ARROW_RIGHT
+#define ARROW_DOWN TB_KEY_ARROW_DOWN
+#define HOME TB_KEY_HOME
+#define END TB_KEY_END
+#define PAGE_UP TB_KEY_PGUP
+#define PAGE_DOWN TB_KEY_PGDN
+#define CTRL TB_KEY_CTRL_T
+#define ALT TB_KEY_ALT_T
 #define ERROR_MESSAGE "NOT ENOUGH ESPACE"
 
 char *archiveText; // ? Is Used to manage the file input
