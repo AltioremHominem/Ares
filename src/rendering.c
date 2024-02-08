@@ -76,6 +76,7 @@ void textRendering(char *archiveText){ // ? Rendering of the text of the input f
 
 void startRenderTermBox(char *filename){
     tb_init();
+    tb_clear();
     tb_present(); // ? Init TermBox Functions
     int width, height;
     width = tb_width();
@@ -86,7 +87,7 @@ void startRenderTermBox(char *filename){
         exit(1);
     }
 
-    if (filename == NULL) {
+    if (filename == NULL) { // If there is no archive, start rendering, if is there is archive, process archive
     screenRendering();
     inputRendering();
     
