@@ -9,9 +9,6 @@ void textRendering(char *archiveText);
 
 void startRenderTermBox(char *filename);
 
-void finishRenderTermBox();
-
-
 
 
 

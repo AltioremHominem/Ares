@@ -7,6 +7,4 @@ void commandMode();
 
 void normalMode();
 
-void visualMode();
-
 #endif // MODES_H

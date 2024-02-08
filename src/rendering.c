@@ -7,32 +7,7 @@
 #include "rendering.h"
 #include "modes.h"
 
-#define BACKSPACE TB_KEY_BACKSPACE
-#define TAB TB_KEY_TAB
-#define ENTER TB_KEY_ENTER
-#define ESCAPE TB_KEY_ESC
-#define F1 TB_KEY_F1
-#define F2 TB_KEY_F2
-#define F3 TB_KEY_F3
-#define F4 TB_KEY_F4
-#define F5 TB_KEY_F5
-#define F6 TB_KEY_F6
-#define F7 TB_KEY_F7
-#define F8 TB_KEY_F8
-#define F9 TB_KEY_F9
-#define F10 TB_KEY_F10
-#define F11 TB_KEY_F11
-#define F12 TB_KEY_F12
-#define ARROW_LEFT TB_KEY_ARROW_LEFT
-#define ARROW_UP TB_KEY_ARROW_UP
-#define ARROW_RIGHT TB_KEY_ARROW_RIGHT
-#define ARROW_DOWN TB_KEY_ARROW_DOWN
-#define HOME TB_KEY_HOME
-#define END TB_KEY_END
-#define PAGE_UP TB_KEY_PGUP
-#define PAGE_DOWN TB_KEY_PGDN
-#define CTRL TB_KEY_CTRL_T
-#define ALT TB_KEY_ALT_T
+
 #define ERROR_MESSAGE "NOT ENOUGH ESPACE"
 
 #define NORMAL_MODE 0
@@ -42,11 +17,11 @@
 char *archiveText; // ? Is Used to manage the file input
 
 
-void screenRendering(){
+void screenRendering(){ // ? Print the "~" in all the first X position except when there is text
 
 }
 
-void inputRendering(){
+void inputRendering(){ // ? Handles the input of the file
     struct tb_event event;
     tb_poll_event(&event);
     struct tb_cell *cells = tb_cell_buffer(); // ? This is used to make the terminal output match the terminal color scheme.
@@ -59,19 +34,23 @@ void inputRendering(){
                 if (event.key == 'i') {
                     current_mode = INSERT_MODE;
                     tb_present();
+                    insertMode();
                 } else if (event.key == ':') {
                     current_mode = COMMAND_MODE;
                     tb_present();
+                    commandMode();
                 }
             } else if (current_mode == INSERT_MODE) {
-                if (event.key == ESCAPE) {
+                if (event.key == TB_KEY_ESC) {
                     current_mode = NORMAL_MODE;
                     tb_present();
+                    normalMode();
                 }
             } else if (current_mode == COMMAND_MODE) {
-                if (event.key == ESCAPE) {
+                if (event.key == TB_KEY_ESC) {
                     current_mode = NORMAL_MODE;
                     tb_present();
+                    normalMode();
                 }
             }
         }
@@ -120,9 +99,4 @@ void startRenderTermBox(char *filename){
     inputRendering();
     }
 
-}
-
-
-void finishRenderTermBox(){
-    tb_shutdown();   // ? End TermBox End Function
 }
