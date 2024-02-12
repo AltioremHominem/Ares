@@ -6,7 +6,7 @@
 
 
 
-void fileInput(char *filename){
+void fileInput(char *filename){ // Open Archive
     FILE *archive;
 
     archive = fopen(filename,"a+"); // ? Read Archive, if it doesn't exist, creates it
@@ -42,9 +42,8 @@ void fileInput(char *filename){
     }
 }
 
-
-
-void fileOutput(){
+void fileOutput(char *filename, char *fileText){ // Write Changes
+    FILE *archive;
 
 
 

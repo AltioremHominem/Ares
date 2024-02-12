@@ -5,7 +5,7 @@
 void fileInput(char *filename);
 
 
-void fileOutput();
+void fileOutput(char *filenamr, char *fileText);
 
 
 
