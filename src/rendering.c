@@ -31,8 +31,8 @@ void inputRendering(){ // ? Handles the input of the user (main Ares loop)
     while (1) {   // ?  Ares Main Loop
         if (event.type == TB_EVENT_KEY) {
             if (current_mode == NORMAL_MODE) { // * Dependeing on what return the modes functions, the modes changes
-                tb_present();
-                current_mode = normalMode(); // ! WIP
+                tb_present();                
+                normalMode(); // ! WIP
                 /*
                 if (event.key == 'i') {
                     current_mode = INSERT_MODE;
