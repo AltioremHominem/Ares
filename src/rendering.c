@@ -28,7 +28,7 @@ void inputRendering(){ // ? Handles the input of the file
     uint16_t bg = cells[5 + 5 * tb_width()].bg;
     uint16_t fg = TB_WHITE;
     int current_mode = NORMAL_MODE;
-    while (1) {
+    while (1) {   // ?  Ares Main Loop
         if (event.type == TB_EVENT_KEY) {
             if (current_mode == NORMAL_MODE) {
                 if (event.key == 'i') {
@@ -87,14 +87,14 @@ void startRenderTermBox(char *filename){
         exit(1);
     }
 
-    if (filename == NULL) { // If there is no archive, start rendering, if is there is archive, process archive
+    if (filename == NULL) { // ? If there is no archive, start rendering, if is there is archive, process archive
     screenRendering();
     inputRendering();
     
     } else {
-        screenRendering();
+    screenRendering();
     fileInput(filename);
-    archiveText=(char *)malloc(1 * sizeof(archiveText));
+    archiveText=(char *)malloc(1 * sizeof(*archiveText));
     textRendering(archiveText);
     free(archiveText);
     inputRendering();

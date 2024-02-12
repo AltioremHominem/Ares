@@ -6,15 +6,15 @@
 
 
 
-void fileInput(char *filename){ // Open Archive
+void fileInput(char *filename){ // ? Open Archive
     FILE *archive;
 
     archive = fopen(filename,"a+"); // ? Read Archive, if it doesn't exist, creates it
 
-    if ( archive == NULL ) {
+    if ( archive == NULL ) { // ? Create Archive
 
 
-    } else { // ? Read Archive and all the text comes to the memory
+    } else { // ? Read Archive and all the text comes to the memory (dinamic memory management)
         int character;
         long long length = 0;
         char *charArray;
@@ -42,9 +42,11 @@ void fileInput(char *filename){ // Open Archive
     }
 }
 
-void fileOutput(char *filename, char *fileText){ // Write Changes
-    FILE *archive;
-
-
-
+void fileOutput(char *filename, char *fileText){ // ? Write Changes
+    FILE *archive = fopen(filename, "a");
+    if (archive == NULL) {
+        exit(1);
+    }
+    fputs(fileText,archive);
+    fclose(archive);
 }
