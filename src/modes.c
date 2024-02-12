@@ -9,6 +9,16 @@
 #define HEIGHT 24
 #define CHAR_SPACING 2
 
+#define UP 1
+#define DOWN 2
+#define RIGTH 3
+#define LEFT 3
+
+void moveCursor(short movementCursor){
+
+
+}
+
 void insertMode(){ // ? Character Insert
     bool running = true;
     int cursor_x = 0;
@@ -44,8 +54,29 @@ void commandMode(){
 
 }
 
-void normalMode(){
-
+void normalMode(){ 
+    struct tb_event event;
+    tb_poll_event(&event);
+    switch (event.key){
+    case 'i':
+        tb_present();
+        insertMode();
+        break;
+    case  ':':
+        tb_present();
+        commandMode();
+        break;
+    case  'h': 
+        break;
+    case  'j':
+        break;
+    case  'k':
+        break;
+    case  'l':
+        break;   
+    default:
+        break;
+    }
 
 }
 

@@ -31,7 +31,9 @@ void inputRendering(){ // ? Handles the input of the user (main Ares loop)
     while (1) {   // ?  Ares Main Loop
         if (event.type == TB_EVENT_KEY) {
             if (current_mode == NORMAL_MODE) { // * Dependeing on what return the modes functions, the modes changes
-                normalMode(); // ! WIP
+                tb_present();
+                current_mode = normalMode(); // ! WIP
+                /*
                 if (event.key == 'i') {
                     current_mode = INSERT_MODE;
                     tb_present();
@@ -41,18 +43,25 @@ void inputRendering(){ // ? Handles the input of the user (main Ares loop)
                     tb_present();
                     commandMode();
                 }
+                */
             } else if (current_mode == INSERT_MODE) {
+                tb_present();
+                insertMode();
+                /*
                 if (event.key == TB_KEY_ESC) {
                     current_mode = NORMAL_MODE;
                     tb_present();
                     normalMode();
-                }
+                } */
             } else if (current_mode == COMMAND_MODE) {
+                tb_present();
+                commandMode();
+                /*
                 if (event.key == TB_KEY_ESC) {
                     current_mode = NORMAL_MODE;
                     tb_present();
                     normalMode();
-                }
+                } */
             }
         }
     }
