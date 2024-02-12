@@ -9,10 +9,11 @@
 void fileInput(char *filename){ // ? Open Archive
     FILE *archive;
 
-    archive = fopen(filename,"a+"); // ? Read Archive, if it doesn't exist, creates it
+    archive = fopen(filename,"r"); // ? Read Archive, if it doesn't exist, creates it
 
     if ( archive == NULL ) { // ? Create Archive
-
+        archive = fopen(filename,"w");
+        fclose(archive);
 
     } else { // ? Read Archive and all the text comes to the memory (dinamic memory management)
         int character;
@@ -28,17 +29,17 @@ void fileInput(char *filename){ // ? Open Archive
         }
         charArray[length++] = (char)character;
 
-    }
+        }
 
-    charArray = (char *)realloc(charArray, (length + 1)* sizeof(char) );
-        if ( charArray == NULL) {
-            free(charArray);
-        exit(1);
-    }
-    charArray[length] = '\0';
-    char fileText[length + 1];
-    strncpy(fileText, charArray, length + 1);
-    free(charArray);
+        charArray = (char *)realloc(charArray, (length + 1)* sizeof(char) );
+            if ( charArray == NULL) {
+                free(charArray);
+            exit(1);
+        }
+        charArray[length] = '\0';
+        char fileText[length + 1];
+        strncpy(fileText, charArray, length + 1);
+        free(charArray);
     }
 }
 
