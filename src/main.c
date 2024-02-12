@@ -20,25 +20,25 @@ int main(int argc, char  **argv){
     int opt;
     int opt_index = 0;
     if (argc == 0) {
-        startRenderTermBox(NULL); //rendering.c Function
+        startRenderTermBox(NULL); 
 
     } else {
-        if (optind < argc) { // If is there a filename to parse
+        if (optind < argc) { //? If is there a filename to parse
             char *filename;
             filename = argv[optind];
             for(int i=0;filename[i] != '\0' ; i++) {
-                if (filename[i] == '*' || filename[i] == '?' || filename[i] == '/' || filename[i] == '\\' ||
+                if (filename[i] == '*' || filename[i] == '?' ||  filename[i] == '\\' ||
                     filename[i] == '<' || filename[i] == '>' || filename[i] == ':' || filename[i] == '|' ||
                     filename[i] == '"' || filename[i] == '\'' || filename[i] == ';' || filename[i] == ',' ||
                     filename[i] == '=') {
                     printf(ERROR_INFO);
                     return 1;
                 } else {
-                    startRenderTermBox(filename); //rendering.c Function but calling an IO
+                    startRenderTermBox(filename); 
                 }
             }
     }
-        char *filename;
+        char *filename; // ? Arguments Parsing
         while ((opt = getopt_long(argc, argv, "hv",long_options, &opt_index)) != -1) {
             switch(opt){
                 case 'h':
@@ -47,14 +47,14 @@ int main(int argc, char  **argv){
                 case 'v':
                     printf(VERSION_INFO);
                     return 0;
-                case '?': // Future Arguments Preparation Parsing
+                case '?': // ? Future Arguments Preparation Parsing
                     filename = argv[1];
                     for(int i=0;filename[i] != '\0' ; i++) {
-                        if(filename[i] == '*' || filename[i] == '?' || filename[i] == '/' || filename[i] == '\\' || filename[i] == '<' || filename[i] == '>' || filename[i] == ':' || filename[i] == '|' || filename[i] == '"' || filename[i] == '\'' || filename[i] == ';' || filename[i] == ',' || filename[i] == '=' ){
+                        if(filename[i] == '*' || filename[i] == '?' ||  filename[i] == '\\' || filename[i] == '<' || filename[i] == '>' || filename[i] == ':' || filename[i] == '|' || filename[i] == '"' || filename[i] == '\'' || filename[i] == ';' || filename[i] == ',' || filename[i] == '=' ){
                             printf(ERROR_INFO);
                         return 1;
                         } else {
-                    startRenderTermBox(filename); //rendering.c Function but calling an IO
+                    startRenderTermBox(filename); 
             }
                     }
                     break;

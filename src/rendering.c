@@ -21,16 +21,16 @@ void screenRendering(){ // ? Print the "~" in all the first X position except wh
 
 }
 
-void inputRendering(){ // ? Handles the input of the file
+void inputRendering(){ // ? Handles the input of the user (main Ares loop)
     struct tb_event event;
     tb_poll_event(&event);
     struct tb_cell *cells = tb_cell_buffer(); // ? This is used to make the terminal output match the terminal color scheme.
     uint16_t bg = cells[5 + 5 * tb_width()].bg;
     uint16_t fg = TB_WHITE;
-    int current_mode = NORMAL_MODE;
+    short current_mode = NORMAL_MODE;
     while (1) {   // ?  Ares Main Loop
         if (event.type == TB_EVENT_KEY) {
-            if (current_mode == NORMAL_MODE) {
+            if (current_mode == NORMAL_MODE) { // * Dependeing on what return the modes functions, the modes changes
                 if (event.key == 'i') {
                     current_mode = INSERT_MODE;
                     tb_present();
@@ -58,7 +58,7 @@ void inputRendering(){ // ? Handles the input of the file
 }
 
 void textRendering(char *archiveText){ // ? Rendering of the text of the input file
-    int y = 0, x = 0;
+    short y = 0, x = 0;
     struct tb_cell *cells = tb_cell_buffer(); // ? This is used to make the terminal output match the terminal color scheme.
     uint16_t bg = cells[5 + 5 * tb_width()].bg;
     uint16_t fg = TB_WHITE;
