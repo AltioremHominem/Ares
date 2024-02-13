@@ -48,13 +48,14 @@ void insertMode(){ // ? Character Insert
     }
 }
 
-void commandMode(){
-
+void commandMode(){ // ! WIP
+    struct tb_event event;
+    tb_poll_event(&event);
 
 
 }
 
-void normalMode(){ 
+void normalMode(){  // ! WIP
     struct tb_event event;
     tb_poll_event(&event);
     switch (event.key){

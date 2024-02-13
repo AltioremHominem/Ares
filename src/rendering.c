@@ -18,7 +18,12 @@ char *archiveText; // ? Is Used to manage the file input
 
 
 void screenRendering(){ // ? Print the "~" in all the first X position except when there is text
-
+    int width, height;
+    width = tb_width();
+    height = tb_height();
+    struct tb_cell *cells = tb_cell_buffer(); // ? This is used to make the terminal output match the terminal color scheme.
+    uint16_t bg = cells[5 + 5 * tb_width()].bg;
+    uint16_t fg = TB_WHITE; // ! WIP
 }
 
 void inputRendering(){ // ? Handles the input of the user (main Ares loop)
