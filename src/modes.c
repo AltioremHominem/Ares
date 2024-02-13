@@ -15,7 +15,16 @@
 #define LEFT 3
 
 void moveCursor(short movementCursor){
-
+    switch (movementCursor)
+    {
+    case UP:
+        /* code */
+        break;
+    
+    default:
+        break;
+    }    
+    
 
 }
 
@@ -56,6 +65,8 @@ void commandMode(){ // ! WIP
 }
 
 void normalMode(){  // ! WIP
+    int cursor_x = 0;
+    int cursor_y = 0;
     struct tb_event event;
     tb_poll_event(&event);
     switch (event.key){
@@ -68,12 +79,20 @@ void normalMode(){  // ! WIP
         commandMode();
         break;
     case  'h': 
+        moveCursor(UP);
+        tb_present();
         break;
     case  'j':
+        moveCursor(DOWN);
+        tb_present();
         break;
     case  'k':
+        moveCursor(LEFT);
+        tb_present();
         break;
     case  'l':
+        moveCursor(RIGTH);
+        tb_present();
         break;   
     default:
         break;
