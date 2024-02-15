@@ -9,24 +9,7 @@
 #define HEIGHT 24
 #define CHAR_SPACING 2
 
-#define UP 1
-#define DOWN 2
-#define RIGTH 3
-#define LEFT 3
 
-void moveCursor(short movementCursor){
-    switch (movementCursor)
-    {
-    case UP:
-        /* code */
-        break;
-    
-    default:
-        break;
-    }    
-    
-
-}
 
 void insertMode(){ // ? Character Insert
     bool running = true;
@@ -64,39 +47,45 @@ void commandMode(){ // ! WIP
 
 }
 
-void normalMode(){  // ! WIP
+void normalMode(){  // ? Cursor movement and other modes 
     int cursor_x = 0;
     int cursor_y = 0;
+    tb_set_cursor(0,0);
     struct tb_event event;
     tb_poll_event(&event);
-    switch (event.key){
-    case 'i':
-        tb_present();
-        insertMode();
-        break;
-    case  ':':
-        tb_present();
-        commandMode();
-        break;
-    case  'h': 
-        moveCursor(UP);
-        tb_present();
-        break;
-    case  'j':
-        moveCursor(DOWN);
-        tb_present();
-        break;
-    case  'k':
-        moveCursor(LEFT);
-        tb_present();
-        break;
-    case  'l':
-        moveCursor(RIGTH);
-        tb_present();
-        break;   
-    default:
-        break;
+    while (1){
+    switch (event.key)  {  
+        case 'i':
+            tb_present();
+            insertMode();
+            break;
+        case  ':':
+            tb_present();
+            commandMode();
+            break;
+        case  'h':            
+            cursor_x++;
+            tb_set_cursor(cursor_x,cursor_y);
+            tb_present();
+            break;
+        case  'j':
+            cursor_x--;
+            tb_set_cursor(cursor_x,cursor_y);
+            tb_present();
+            break;
+        case  'k':
+            cursor_y--;
+            tb_set_cursor(cursor_x,cursor_y);
+            tb_present();
+            break;
+        case  'l':
+            cursor_y++;
+            tb_set_cursor(cursor_x,cursor_y);
+            tb_present();
+            break;   
+        default:
+            break;
+        }
     }
-
 }
 
