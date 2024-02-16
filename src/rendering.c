@@ -16,31 +16,31 @@
 
 char *archiveText; // ? Is Used to manage the file input
 
-
-void screenRendering(){ // ? Print the "~" in all the first X position except when there is text
+// ! WIP
+void screenRendering(char *filename){ // ? Print the "~" in all the first X position except when there is text
     int width, height;
     width = tb_width();
     height = tb_height();
-    struct tb_cell *cells = tb_cell_buffer(); // ? This is used to make the terminal output match the terminal color scheme.
-    uint16_t bg = cells[5 + 5 * tb_width()].bg;
-    uint16_t fg = TB_WHITE; // ! WIP
+    uint16_t bg = TB_BLACK;
+    uint16_t fg = TB_WHITE; 
+    for (short i = 0; i <= width; i++)
+    {
+        tb_change_cell(i,1,' ',fg,TB_WHITE);
+        tb_present();
+    }
+    if (filename == NULL) {
+
+
+    } else {
+
+    }
 }
 
-void inputRendering(){ // ? Handles the input of the user and start the modes
-    struct tb_event event;
-    tb_poll_event(&event);
-    struct tb_cell *cells = tb_cell_buffer(); // ? This is used to make the terminal output match the terminal color scheme.
-    uint16_t bg = cells[5 + 5 * tb_width()].bg;
-    uint16_t fg = TB_WHITE;
-    short current_mode = NORMAL_MODE;
-    normalMode();
-    }
 
 
 void textRendering(char *archiveText){ // ? Rendering of the text of the input file
     short y = 0, x = 0;
-    struct tb_cell *cells = tb_cell_buffer(); // ? This is used to make the terminal output match the terminal color scheme.
-    uint16_t bg = cells[5 + 5 * tb_width()].bg;
+    uint16_t bg = TB_BLACK;
     uint16_t fg = TB_WHITE;
     // ? Loop through each character in the array and print it on the screen
     for (int i = 0; archiveText[i] != '\0'; i++){
@@ -68,16 +68,16 @@ void startRenderTermBox(char *filename){
     }
 
     if (filename == NULL) { // ? If there is no archive, start rendering, if is there is archive, process archive
-    screenRendering();
-    inputRendering();
+    screenRendering(filename);
+    normalMode();
     
     } else {
-    screenRendering();
+    screenRendering(filename);
     fileInput(filename);
     archiveText=(char *)malloc(1 * sizeof(*archiveText));
     textRendering(archiveText);
     free(archiveText);
-    inputRendering();
+    normalMode();
     }
 
 }

@@ -12,12 +12,11 @@
 
 
 void insertMode(){ // ? Character Insert
-    bool running = true;
     int cursor_x = 0;
     int cursor_y = 0;
     struct tb_event event;
     tb_poll_event(&event);
-    while (running) {
+    while (1) {
         tb_present();
         switch (event.type) { // ? This manages the insert mode and the input of characteres
             case TB_EVENT_KEY:
@@ -31,7 +30,7 @@ void insertMode(){ // ? Character Insert
                     cursor_x = 0;
                     cursor_y++;
                 } else if (event.key == TB_KEY_ESC ) {
-                    running = false;
+                    break;
                 }
                 cursor_x = (cursor_x + WIDTH) % WIDTH;
                 cursor_y = (cursor_y + HEIGHT) % HEIGHT;

@@ -1,9 +1,7 @@
 #ifndef RENDERING_H
 #define RENDERING_H
 
-void screenRendering();
-
-void inputRendering();
+void screenRendering(char *filename);
 
 void textRendering(char *archiveText);
 
