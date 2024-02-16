@@ -24,24 +24,23 @@ void screenRendering(char *filename){ // ? Print the "~" in all the first X posi
     uint16_t fg = TB_WHITE; 
     for (short i = 0; i <= width; i++)
     {
-        tb_change_cell(i,1,' ',fg,TB_WHITE);
-        tb_present();
+        tb_change_cell(i,1,' ',fg,bg);
     }
     if (filename == NULL) {
-        tb_change_cell(2,1,'[',fg,TB_WHITE);
-        tb_change_cell(3,1,'N',fg,TB_WHITE);
-        tb_change_cell(4,1,'o',fg,TB_WHITE);
-        tb_change_cell(5,1,' ',fg,TB_WHITE);
-        tb_change_cell(6,1,'N',fg,TB_WHITE);
-        tb_change_cell(7,1,'a',fg,TB_WHITE);
-        tb_change_cell(8,1,'m',fg,TB_WHITE);
-        tb_change_cell(9,1,'e',fg,TB_WHITE);
-        tb_change_cell(10,1,']',fg,TB_WHITE);
+        tb_change_cell(2,1,'[',fg,bg);
+        tb_change_cell(3,1,'N',fg,bg);
+        tb_change_cell(4,1,'o',fg,bg);
+        tb_change_cell(5,1,' ',fg,bg);
+        tb_change_cell(6,1,'N',fg,bg);
+        tb_change_cell(7,1,'a',fg,bg);
+        tb_change_cell(8,1,'m',fg,bg);
+        tb_change_cell(9,1,'e',fg,bg);
+        tb_change_cell(10,1,']',fg,bg);
         tb_present();
 
     } else {
         for (short i = 1; filename[i] != '\0' ; i++) {
-            tb_change_cell(i,1,filename[i],fg,TB_WHITE);
+            tb_change_cell(i,1,filename[i],fg,bg);
         }
     }
 }
