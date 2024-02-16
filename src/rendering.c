@@ -16,7 +16,6 @@
 
 char *archiveText; // ? Is Used to manage the file input
 
-// ! WIP
 void screenRendering(char *filename){ // ? Print the "~" in all the first X position except when there is text
     int width, height;
     width = tb_width();
@@ -29,10 +28,21 @@ void screenRendering(char *filename){ // ? Print the "~" in all the first X posi
         tb_present();
     }
     if (filename == NULL) {
-
+        tb_change_cell(2,1,'[',fg,TB_WHITE);
+        tb_change_cell(3,1,'N',fg,TB_WHITE);
+        tb_change_cell(4,1,'o',fg,TB_WHITE);
+        tb_change_cell(5,1,' ',fg,TB_WHITE);
+        tb_change_cell(6,1,'N',fg,TB_WHITE);
+        tb_change_cell(7,1,'a',fg,TB_WHITE);
+        tb_change_cell(8,1,'m',fg,TB_WHITE);
+        tb_change_cell(9,1,'e',fg,TB_WHITE);
+        tb_change_cell(10,1,']',fg,TB_WHITE);
+        tb_present();
 
     } else {
-
+        for (short i = 1; filename[i] != '\0' ; i++) {
+            tb_change_cell(i,1,filename[i],fg,TB_WHITE);
+        }
     }
 }
 
