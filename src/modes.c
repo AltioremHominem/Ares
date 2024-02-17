@@ -42,7 +42,30 @@ void insertMode(){ // ? Character Insert
 void commandMode(){ // ! WIP
     struct tb_event event;
     tb_poll_event(&event);
-
+    while (1)
+    {
+        switch(event.key) {
+            case 'a':
+                break;
+            case 'b':
+                break;
+            case 'c':
+                break;
+            case 'd':
+                break;
+            case 'e':
+                break;
+            case 'f':
+                break;
+            case 'g':
+                break;
+            case 'h':
+                break;
+            case 'i':
+                break;
+        }
+    }
+    
 
 }
 
