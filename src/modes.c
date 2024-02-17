@@ -42,12 +42,14 @@ void insertMode(){ // ? Character Insert
 
 void commandMode(){ // ? Vim Like Command Mode
     struct tb_event event;
+    char *bufferCommand;
     tb_poll_event(&event);
     tb_change_cell(1,0,':',TB_WHITE,TB_BLACK);
     tb_present();
     bool inCommandMode = true;
     while (inCommandMode)
-    {
+    {   
+        xpos = 1;
         switch(event.key) {
             case TB_KEY_ENTER:
                 break;
@@ -78,40 +80,94 @@ void commandMode(){ // ? Vim Like Command Mode
                 tb_present();
                 break;
             case 'd':
+                xpos++;
+                tb_change_cell(xpos,0,'d',TB_WHITE,TB_BLACK);
+                tb_present();
                 break;
             case 'e':
+                xpos++;
+                tb_change_cell(xpos,0,'e',TB_WHITE,TB_BLACK);
+                tb_present();
                 break;
             case 'f':
+                xpos++;
+                tb_change_cell(xpos,0,'f',TB_WHITE,TB_BLACK);
+                tb_present();
                 break;
             case 'g':
+                xpos++;
+                tb_change_cell(xpos,0,'g',TB_WHITE,TB_BLACK);
+                tb_present();
                 break;
             case 'h':
+                xpos++;
+                tb_change_cell(xpos,0,'h',TB_WHITE,TB_BLACK);
+                tb_present();
                 break;
             case 'i':
+                xpos++;
+                tb_change_cell(xpos,0,'i',TB_WHITE,TB_BLACK);
+                tb_present();
                 break;
             case 'j':
+                xpos++;
+                tb_change_cell(xpos,0,'j',TB_WHITE,TB_BLACK);
+                tb_present();
                 break;
             case 'k':
+                xpos++;
+                tb_change_cell(xpos,0,'k',TB_WHITE,TB_BLACK);
+                tb_present();
                 break; 
             case 'l':
+                xpos++;
+                tb_change_cell(xpos,0,'l',TB_WHITE,TB_BLACK);
+                tb_present();
                 break; 
             case 'm':
+                xpos++;
+                tb_change_cell(xpos,0,'m',TB_WHITE,TB_BLACK);
+                tb_present();
                 break; 
             case 'n':
+                xpos++;
+                tb_change_cell(xpos,0,'n',TB_WHITE,TB_BLACK);
+                tb_present();
                 break; 
             case 'o':
+                xpos++;
+                tb_change_cell(xpos,0,'o',TB_WHITE,TB_BLACK);
+                tb_present();
                 break; 
             case 'p':
+                xpos++;
+                tb_change_cell(xpos,0,'p',TB_WHITE,TB_BLACK);
+                tb_present();
                 break; 
             case 'q':
+            xpos++;
+                tb_change_cell(xpos,0,'q',TB_WHITE,TB_BLACK);
+                tb_present();
                 break; 
             case 'r':
+                xpos++;
+                tb_change_cell(xpos,0,'r',TB_WHITE,TB_BLACK);
+                tb_present();
                 break; 
             case 's':
+                xpos++;
+                tb_change_cell(xpos,0,'s',TB_WHITE,TB_BLACK);
+                tb_present();
                 break; 
             case 't':
+                xpos++;
+                tb_change_cell(xpos,0,'t',TB_WHITE,TB_BLACK);
+                tb_present();
                 break; 
             case 'u':
+                xpos++;
+                tb_change_cell(xpos,0,'u',TB_WHITE,TB_BLACK);
+                tb_present();
                 break; 
             case 'v':
                 break; 
@@ -187,8 +243,8 @@ void commandMode(){ // ? Vim Like Command Mode
                 break; 
         }
     }
-    for (int i = 0 ; i < xpos; i++){ // ? End command mode and return to normality
-
+    for (short i = 0 ; i < xpos; i++){ // ? End command mode and return to normality
+        tb_change_cell(i,0,' ',TB_BLACK,TB_BLACK);
     }
     
 
