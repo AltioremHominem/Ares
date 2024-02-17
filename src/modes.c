@@ -9,6 +9,7 @@
 #define HEIGHT 24
 #define CHAR_SPACING 2
 
+short xpos = 1;
 
 
 void insertMode(){ // ? Character Insert
@@ -39,10 +40,11 @@ void insertMode(){ // ? Character Insert
     }
 }
 
-void commandMode(){ // ! WIP
+void commandMode(){ // ? Vim Like Command Mode
     struct tb_event event;
     tb_poll_event(&event);
-    short xpos = 1;
+    tb_change_cell(1,0,':',TB_WHITE,TB_BLACK);
+    tb_present();
     bool inCommandMode = true;
     while (inCommandMode)
     {
@@ -184,6 +186,9 @@ void commandMode(){ // ! WIP
             default:
                 break; 
         }
+    }
+    for (int i = 0 ; i < xpos; i++){ // ? End command mode and return to normality
+
     }
     
 
