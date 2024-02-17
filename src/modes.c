@@ -42,14 +42,38 @@ void insertMode(){ // ? Character Insert
 void commandMode(){ // ! WIP
     struct tb_event event;
     tb_poll_event(&event);
-    while (1)
+    short xpos = 1;
+    bool inCommandMode = true;
+    while (inCommandMode)
     {
         switch(event.key) {
+            case TB_KEY_ENTER:
+                break;
+            case TB_KEY_SPACE:
+                xpos++;
+                tb_change_cell(xpos,0,' ',TB_WHITE,TB_BLACK);
+                tb_present();
+                break;
+            case TB_KEY_ESC:
+                inCommandMode = false;
+                break;
+            case TB_KEY_BACKSPACE:
+                xpos--;
+                break;
             case 'a':
+                xpos++;
+                tb_change_cell(xpos,0,'a',TB_WHITE,TB_BLACK);
+                tb_present();
                 break;
             case 'b':
+                xpos++;
+                tb_change_cell(xpos,0,'b',TB_WHITE,TB_BLACK);
+                tb_present();
                 break;
             case 'c':
+                xpos++;
+                tb_change_cell(xpos,0,'c',TB_WHITE,TB_BLACK);
+                tb_present();
                 break;
             case 'd':
                 break;
@@ -63,6 +87,102 @@ void commandMode(){ // ! WIP
                 break;
             case 'i':
                 break;
+            case 'j':
+                break;
+            case 'k':
+                break; 
+            case 'l':
+                break; 
+            case 'm':
+                break; 
+            case 'n':
+                break; 
+            case 'o':
+                break; 
+            case 'p':
+                break; 
+            case 'q':
+                break; 
+            case 'r':
+                break; 
+            case 's':
+                break; 
+            case 't':
+                break; 
+            case 'u':
+                break; 
+            case 'v':
+                break; 
+            case 'w':
+                break; 
+            case 'x':
+                break; 
+            case 'y':
+                break; 
+            case 'z':
+                break; 
+            case 'ñ':
+                break; 
+            case 'ç':
+                break; 
+            case 'A':
+                break; 
+            case 'B':
+                break; 
+            case 'C':
+                break; 
+            case 'D':
+                break; 
+            case 'E':
+                break;
+            case 'F':
+                break;
+            case 'G':
+                break;
+            case 'H':
+                break;
+            case 'I':
+                break;
+            case 'J':
+                break;
+            case 'K':
+                break; 
+            case 'L':
+                break; 
+            case 'M':
+                break; 
+            case 'N':
+                break; 
+            case 'O':
+                break; 
+            case 'P':
+                break; 
+            case 'Q':
+                break; 
+            case 'R':
+                break; 
+            case 'S':
+                break; 
+            case 'T':
+                break; 
+            case 'U':
+                break; 
+            case 'V':
+                break; 
+            case 'W':
+                break; 
+            case 'X':
+                break; 
+            case 'Y':
+                break; 
+            case 'Z':
+                break; 
+            case 'Ñ':
+                break; 
+            case 'Ç':
+                break;  
+            default:
+                break; 
         }
     }
     
