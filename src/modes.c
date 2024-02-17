@@ -41,208 +41,29 @@ void insertMode(){ // ? Character Insert
 }
 
 void commandMode(){ // ? Vim Like Command Mode
-    struct tb_event event;
     char *bufferCommand;
+    struct tb_event event;   
+    tb_select_input_mode(TB_INPUT_ESC | TB_INPUT_MOUSE);
     tb_poll_event(&event);
     tb_change_cell(1,0,':',TB_WHITE,TB_BLACK);
     tb_present();
-    bool inCommandMode = true;
-    while (inCommandMode)
+    while (1)
     {   
         xpos = 1;
-        switch(event.key) {
-            case TB_KEY_ENTER:
-                break;
-            case TB_KEY_SPACE:
-                xpos++;
-                tb_change_cell(xpos,0,' ',TB_WHITE,TB_BLACK);
-                tb_present();
-                break;
-            case TB_KEY_ESC:
-                inCommandMode = false;
-                break;
-            case TB_KEY_BACKSPACE:
-                xpos--;
-                break;
-            case 'a':
-                xpos++;
-                tb_change_cell(xpos,0,'a',TB_WHITE,TB_BLACK);
-                tb_present();
-                break;
-            case 'b':
-                xpos++;
-                tb_change_cell(xpos,0,'b',TB_WHITE,TB_BLACK);
-                tb_present();
-                break;
-            case 'c':
-                xpos++;
-                tb_change_cell(xpos,0,'c',TB_WHITE,TB_BLACK);
-                tb_present();
-                break;
-            case 'd':
-                xpos++;
-                tb_change_cell(xpos,0,'d',TB_WHITE,TB_BLACK);
-                tb_present();
-                break;
-            case 'e':
-                xpos++;
-                tb_change_cell(xpos,0,'e',TB_WHITE,TB_BLACK);
-                tb_present();
-                break;
-            case 'f':
-                xpos++;
-                tb_change_cell(xpos,0,'f',TB_WHITE,TB_BLACK);
-                tb_present();
-                break;
-            case 'g':
-                xpos++;
-                tb_change_cell(xpos,0,'g',TB_WHITE,TB_BLACK);
-                tb_present();
-                break;
-            case 'h':
-                xpos++;
-                tb_change_cell(xpos,0,'h',TB_WHITE,TB_BLACK);
-                tb_present();
-                break;
-            case 'i':
-                xpos++;
-                tb_change_cell(xpos,0,'i',TB_WHITE,TB_BLACK);
-                tb_present();
-                break;
-            case 'j':
-                xpos++;
-                tb_change_cell(xpos,0,'j',TB_WHITE,TB_BLACK);
-                tb_present();
-                break;
-            case 'k':
-                xpos++;
-                tb_change_cell(xpos,0,'k',TB_WHITE,TB_BLACK);
-                tb_present();
-                break; 
-            case 'l':
-                xpos++;
-                tb_change_cell(xpos,0,'l',TB_WHITE,TB_BLACK);
-                tb_present();
-                break; 
-            case 'm':
-                xpos++;
-                tb_change_cell(xpos,0,'m',TB_WHITE,TB_BLACK);
-                tb_present();
-                break; 
-            case 'n':
-                xpos++;
-                tb_change_cell(xpos,0,'n',TB_WHITE,TB_BLACK);
-                tb_present();
-                break; 
-            case 'o':
-                xpos++;
-                tb_change_cell(xpos,0,'o',TB_WHITE,TB_BLACK);
-                tb_present();
-                break; 
-            case 'p':
-                xpos++;
-                tb_change_cell(xpos,0,'p',TB_WHITE,TB_BLACK);
-                tb_present();
-                break; 
-            case 'q':
+        if (event.key == TB_KEY_ENTER) {
+
+        } else if ( event.key == TB_KEY_SPACE) {
             xpos++;
-                tb_change_cell(xpos,0,'q',TB_WHITE,TB_BLACK);
-                tb_present();
-                break; 
-            case 'r':
-                xpos++;
-                tb_change_cell(xpos,0,'r',TB_WHITE,TB_BLACK);
-                tb_present();
-                break; 
-            case 's':
-                xpos++;
-                tb_change_cell(xpos,0,'s',TB_WHITE,TB_BLACK);
-                tb_present();
-                break; 
-            case 't':
-                xpos++;
-                tb_change_cell(xpos,0,'t',TB_WHITE,TB_BLACK);
-                tb_present();
-                break; 
-            case 'u':
-                xpos++;
-                tb_change_cell(xpos,0,'u',TB_WHITE,TB_BLACK);
-                tb_present();
-                break; 
-            case 'v':
-                break; 
-            case 'w':
-                break; 
-            case 'x':
-                break; 
-            case 'y':
-                break; 
-            case 'z':
-                break; 
-            case 'ñ':
-                break; 
-            case 'ç':
-                break; 
-            case 'A':
-                break; 
-            case 'B':
-                break; 
-            case 'C':
-                break; 
-            case 'D':
-                break; 
-            case 'E':
-                break;
-            case 'F':
-                break;
-            case 'G':
-                break;
-            case 'H':
-                break;
-            case 'I':
-                break;
-            case 'J':
-                break;
-            case 'K':
-                break; 
-            case 'L':
-                break; 
-            case 'M':
-                break; 
-            case 'N':
-                break; 
-            case 'O':
-                break; 
-            case 'P':
-                break; 
-            case 'Q':
-                break; 
-            case 'R':
-                break; 
-            case 'S':
-                break; 
-            case 'T':
-                break; 
-            case 'U':
-                break; 
-            case 'V':
-                break; 
-            case 'W':
-                break; 
-            case 'X':
-                break; 
-            case 'Y':
-                break; 
-            case 'Z':
-                break; 
-            case 'Ñ':
-                break; 
-            case 'Ç':
-                break;  
-            default:
-                break; 
-        }
-    }
+            tb_change_cell(xpos,0,' ',TB_WHITE,TB_BLACK);
+            tb_present();
+        } else if ( event.key == TB_KEY_ESC ){
+            break;
+        } else if (event.key == TB_KEY_BACKSPACE) {
+
+        } else if (event.ch >= 32 && event.ch <= 126) {
+
+        } 
+    } 
     for (short i = 0 ; i < xpos; i++){ // ? End command mode and return to normality
         tb_change_cell(i,0,' ',TB_BLACK,TB_BLACK);
     }
