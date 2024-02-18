@@ -11,13 +11,18 @@
 
 short xpos = 1;
 
+void commandModeCommands(char *commandText) {
+    for (short i;commandText != ' ';i++) {
+
+    }
+}
 
 void insertMode(){ // ? Character Insert
     int cursor_x = 0;
     int cursor_y = 0;
     struct tb_event event;
     tb_poll_event(&event);
-    while (1) {
+    while (1) { // ! REVISION
         tb_present();
         switch (event.type) { // ? This manages the insert mode and the input of characteres
             case TB_EVENT_KEY:
@@ -41,17 +46,18 @@ void insertMode(){ // ? Character Insert
 }
 
 void commandMode(){ // ? Vim Like Command Mode
-    char *bufferCommand;
+    char commandText[tb_width() + 2];
     struct tb_event event;   
     tb_select_input_mode(TB_INPUT_ESC | TB_INPUT_MOUSE);
     tb_poll_event(&event);
     tb_change_cell(1,0,':',TB_WHITE,TB_BLACK);
     tb_present();
-    while (1)
-    {   
+    short lenght = 0;
+    while (1) 
+    {   // ! REVISION
         xpos = 1;
         if (event.key == TB_KEY_ENTER) {
-
+            commandModeCommands(commandText);
         } else if ( event.key == TB_KEY_SPACE) {
             xpos++;
             tb_change_cell(xpos,0,' ',TB_WHITE,TB_BLACK);
@@ -59,9 +65,15 @@ void commandMode(){ // ? Vim Like Command Mode
         } else if ( event.key == TB_KEY_ESC ){
             break;
         } else if (event.key == TB_KEY_BACKSPACE) {
-
-        } else if (event.ch >= 32 && event.ch <= 126) {
-
+            xpos--;
+            tb_change_cell(xpos,0,' ',TB_BLACK,TB_BLACK);
+            tb_present();
+        } else if (event.type == TB_EVENT_KEY) {
+            xpos++;
+            tb_change_cell(xpos,0,event.ch,TB_WHITE,TB_BLACK);
+            commandText[lenght] = event.ch;
+            lenght++;
+            tb_present();
         } 
     } 
     for (short i = 0 ; i < xpos; i++){ // ? End command mode and return to normality
